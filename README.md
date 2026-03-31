@@ -17,7 +17,37 @@ Replace this paragraph with your own summary of what your version does.
 
 ## How The System Works
 
-Explain your design in plain language.
+Real-world recommendation systems usually combine many signals, such as what users play, skip, save, and search for, then rank items by how likely each person is to engage. This project uses a simpler content-based version of that idea: each song is compared to a user taste profile using features like genre, mood, energy, tempo, and valence, then given a weighted score based on how close it is to the user's preferences. My version will prioritize relevance first (matching vibe and listening intent), while keeping the scoring rule transparent so it is easy to understand, test, and adjust.
+
+My `Song` object uses these features:
+
+- `id`
+- `title`
+- `artist`
+- `genre`
+- `mood`
+- `energy`
+- `tempo_bpm`
+- `valence`
+- `danceability`
+- `acousticness`
+
+My `UserProfile` object stores these preferences and weights:
+
+- `preferred_genre`
+- `preferred_mood`
+- `preferred_energy`
+- `preferred_tempo_bpm`
+- `preferred_valence`
+- `preferred_danceability`
+- `preferred_acousticness`
+- `weight_genre`
+- `weight_mood`
+- `weight_energy`
+- `weight_tempo`
+- `weight_valence`
+- `weight_danceability`
+- `weight_acousticness`
 
 Some prompts to answer:
 
