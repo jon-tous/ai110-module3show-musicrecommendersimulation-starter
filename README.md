@@ -49,6 +49,28 @@ My `UserProfile` object stores these preferences and weights:
 - `weight_danceability`
 - `weight_acousticness`
 
+### Algorithm Recipe
+
+1. **Input user preferences**
+  - Load `favorite_genre`, `favorite_mood`, and target numeric values.
+2. **Load song catalog**
+  - Read every song row from `data/songs.csv`.
+3. **Score each song**
+  - Start each song at `0` points.
+  - Add **+2** if genre matches the user profile.
+  - Add **+1** if mood matches the user profile.
+  - For each numeric feature (`energy`, `tempo_bpm`, `valence`, `danceability`, `acousticness`), compute closeness:
+    - `closeness = 1 - abs(song_value - target_value)`
+  - Multiply each closeness value by its feature weight.
+  - Add weighted numeric points to produce a final total score.
+4. **Rank songs**
+  - Sort songs by score from highest to lowest.
+  - Return the Top K songs as recommendations.
+
+### Potential Bias Note
+
+This system might over-prioritize genre because genre matches are worth +2 points, which can cause it to miss songs from other genres that still strongly match the user's mood and numeric vibe profile.
+
 Some prompts to answer:
 
 - What features does each `Song` use in your system
