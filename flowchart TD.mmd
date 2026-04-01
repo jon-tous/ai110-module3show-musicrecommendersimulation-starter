@@ -1,0 +1,13 @@
+flowchart TD
+    A[Input: User Preferences] --> B[Load songs from songs.csv]
+    B --> C[For each song in catalog]
+    C --> D[Genre match? +2 points]
+    D --> E[Mood match? +1 point]
+    E --> F[Compute numeric closeness scores]
+    F --> G[Add weighted feature points]
+    G --> H[Store final score for song]
+    H --> I{More songs left?}
+    I -- Yes --> C
+    I -- No --> J[Sort songs by score descending]
+    J --> K[Select Top K recommendations]
+    K --> L[Output recommended songs]
